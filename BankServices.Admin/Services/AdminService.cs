@@ -45,7 +45,7 @@ namespace BankServices.Admin.Services
             var userList = _context.BankAccounts.Where(s => s.FullName.Contains(key)).ToList();
 
 
-            // Normalde UserModel oluşturmak yerine diğer esas modeli döndürmek daha mantıklı ve doğru ama bir foreach de kullanmayalım mı.
+            // Normalde UserModel oluşturmak yerine diğer esas modeli döndürmek daha mantıklı ve doğru ama bir foreach de kullanmayalım mı?
             var listToSend = new List<UserModel>();
             foreach (var user in userList)
             {

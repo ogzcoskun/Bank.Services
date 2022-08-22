@@ -1,18 +1,19 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace BankServices.Admin.Data
 {
     public partial class masterContext : DbContext
     {
-        public masterContext()
-        {
-        }
+        private readonly IConfiguration _config;
 
-        public masterContext(DbContextOptions<masterContext> options)
+        
+        public masterContext(DbContextOptions<masterContext> options, IConfiguration config)
             : base(options)
         {
+            _config = config;
         }
 
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
@@ -30,7 +31,7 @@ namespace BankServices.Admin.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server= localhost;Database=master;Trusted_Connection=True;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer(_config.GetConnectionString("Connection"));
             }
         }
 

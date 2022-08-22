@@ -46,7 +46,6 @@ namespace Authentication.Controllers
                 });
 
                 return Ok(response);
-
             }
             catch(Exception ex)
             {
@@ -55,8 +54,7 @@ namespace Authentication.Controllers
                     IsSuccess = false,
                     Message = ex.Message,
                 });
-            }
-      
+            }      
         }
 
         [HttpPost]
@@ -84,10 +82,7 @@ namespace Authentication.Controllers
                     return Unauthorized();
                 }
 
-
                 return Ok(response);
-
-
             }
             catch(Exception ex)
             {
